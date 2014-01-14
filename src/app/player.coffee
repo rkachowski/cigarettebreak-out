@@ -1,7 +1,7 @@
 define ["cs!app/gameobject"], (GameObject) ->
     class Player extends GameObject
         constructor: (game) ->
-            super game,'8x8', 50, 300
+            super game,'8x8', 50, 416
 
             @scale 7, 1
 

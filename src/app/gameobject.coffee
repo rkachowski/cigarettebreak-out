@@ -33,6 +33,12 @@ define [], () ->
             [@sprite.x, @sprite.y]
             
             
-        update: () =>
-            @sprite.update()
+        x_vel: 0
+        y_vel: 0
 
+        update: () =>
+            @update_kinematics()
+
+        update_kinematics:() =>
+            @sprite.x += @x_vel
+            @sprite.y += @y_vel

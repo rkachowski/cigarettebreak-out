@@ -1,9 +1,10 @@
-define ["cs!app/player", "cs!app/ball"], (Player, Ball) ->
+define ["cs!app/player", "cs!app/ball", "cs!app/constants"], (Player, Ball, Constants) ->
 
   class Main
     @setup: =>
         console.log "Ready!"
-        @game = new Phaser.Game 386, 530, Phaser.AUTO, $("#game")[0], preload: @preload, create: @create, update: @update
+        @game = new Phaser.Game Constants.screen_size[0], Constants.screen_size[1],
+            Phaser.AUTO, $("#game")[0], preload: @preload, create: @create, update: @update
 
 
     @preload: =>
@@ -14,6 +15,8 @@ define ["cs!app/player", "cs!app/ball"], (Player, Ball) ->
     @update: =>
         @player.update()
         @ball.update()
+
+
 
     @create: =>
         console.log "Create"
