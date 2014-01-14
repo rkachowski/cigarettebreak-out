@@ -1,7 +1,7 @@
 define ["cs!app/player", "cs!app/ball", "cs!app/constants", "cs!app/editor", "cs!app/levels"], (Player, Ball, Constants, Editor, Levels) ->
 
   class Main
-    @state: "editor"
+    @state: "play"
 
     @setup: =>
         @updateables = []
