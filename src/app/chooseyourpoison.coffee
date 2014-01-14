@@ -10,7 +10,7 @@ define ["cs!app/player", "cs!app/ball", "cs!app/constants", "cs!app/editor", "cs
             Phaser.AUTO, $("#game")[0], preload: @preload, create: @create, update: @update
 
     @preload: =>
-        @game.load.image("5x5","images/5x5.jpg")
+        @game.load.image("fag","images/fag.png")
         @game.load.image("8x8","images/8x8.jpg")
 
     @loadLevel:(levelString) =>

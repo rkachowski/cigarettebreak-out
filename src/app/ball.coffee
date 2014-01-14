@@ -6,6 +6,9 @@ define ["cs!app/gameobject", "cs!app/constants"], (GameObject, Constants) ->
 
         constructor: (game) ->
             super game,'8x8', 50, 300
+            @trail = []
+
+
 
         hit: (sprite) =>
             intersection = @sprite.bounds.intersection sprite.bounds
@@ -15,8 +18,6 @@ define ["cs!app/gameobject", "cs!app/constants"], (GameObject, Constants) ->
             else
                 @y_vel *= -1
 
-
-
         update:() =>
             switch @state
                 when "start"
@@ -25,10 +26,15 @@ define ["cs!app/gameobject", "cs!app/constants"], (GameObject, Constants) ->
                     @bounce_around()
 
             super
+            @updateTrail()
 
         stick_to_paddle: () =>
             @sprite.x = @paddle.x() + @paddle.sprite.bounds.width / 2
             @sprite.y = @paddle.y() - @sprite.bounds.height
+
+            for sprite in @trail
+                sprite.x = @sprite.x
+                sprite.y = @sprite.y
 
         start:() =>
                 @x_vel = -2
@@ -45,3 +51,6 @@ define ["cs!app/gameobject", "cs!app/constants"], (GameObject, Constants) ->
 
             if @paddle.sprite.bounds.intersects @sprite.bounds
                 @y_vel *= -1
+
+        updateTrail: () =>
+
