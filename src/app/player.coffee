@@ -1,12 +1,12 @@
-define [], () ->
-    class Player
+define ["cs!app/gameobject"], (GameObject) ->
+    class Player extends GameObject
         constructor: (game) ->
-            #create a sprite
-            #
-            @sprite = game.add.sprite( 50, 300, '5x5')
+            super game,'8x8', 50, 300
 
-            @sprite.scale = new Phaser.Point( 10, 2)
+            @scale 7, 1
 
         update: () =>
-            console.log "lol"
+            pointer = @game.input.activePointer
+
+            @sprite.x = pointer.x - @sprite.bounds.width / 2
 
