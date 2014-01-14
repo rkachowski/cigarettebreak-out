@@ -36,3 +36,6 @@ define ["cs!app/gameobject", "cs!app/constants"], (GameObject, Constants) ->
             @x_vel *= -1 if @sprite.x >= Constants.screen_size[0] - @sprite.bounds.width
             @y_vel *= -1 if @sprite.y <= -1
             @y_vel *= -1 if @sprite.y >= Constants.screen_size[1] - @sprite.bounds.height
+
+            if @paddle.sprite.bounds.intersects @sprite.bounds
+                @y_vel *= -1
