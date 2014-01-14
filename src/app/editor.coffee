@@ -3,7 +3,7 @@ define ["cs!app/player", "cs!app/ball", "cs!app/constants", "cs!app/brick"], (Pl
   class Editor
       @tiles: []
 
-      @activate:(@game) =>
+      @activate:(@game, @brickback) =>
           $("#game").mousedown @onClick
           $("#game").mousemove @onMove
           $("#game").mouseup @onUp
@@ -22,6 +22,8 @@ define ["cs!app/player", "cs!app/ball", "cs!app/constants", "cs!app/brick"], (Pl
 
           sprite = @game.add.sprite( position[0] * Constants.brick_width,position[1] * Constants.brick_height, '8x8')
           @tiles.push sprite
+
+          @brickback sprite if @brickback
 
       @tileForPosition: =>
           pointer = @game.input.activePointer

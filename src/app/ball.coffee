@@ -7,6 +7,16 @@ define ["cs!app/gameobject", "cs!app/constants"], (GameObject, Constants) ->
         constructor: (game) ->
             super game,'8x8', 50, 300
 
+        hit: (sprite) =>
+            intersection = @sprite.bounds.intersection sprite.bounds
+
+            if intersection.width > intersection.height
+                @x_vel *= -1
+            else
+                @y_vel *= -1
+
+
+
         update:() =>
             switch @state
                 when "start"
