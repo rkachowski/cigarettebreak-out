@@ -1,4 +1,4 @@
-define ["cs!app/player", "cs!app/ball", "cs!app/constants", "cs!app/editor"], (Player, Ball, Constants, Editor) ->
+define ["cs!app/player", "cs!app/ball", "cs!app/constants", "cs!app/editor", "cs!app/levels"], (Player, Ball, Constants, Editor, Levels) ->
 
   class Main
     @state: "editor"
@@ -12,6 +12,13 @@ define ["cs!app/player", "cs!app/ball", "cs!app/constants", "cs!app/editor"], (P
     @preload: =>
         @game.load.image("5x5","images/5x5.jpg")
         @game.load.image("8x8","images/8x8.jpg")
+
+    @loadLevel:(levelString) =>
+        levelInfo = JSON.parse levelString
+
+        for brick in levelInfo
+              sprite = @game.add.sprite( brick[0] * Constants.brick_width, brick[1] * Constants.brick_height, '8x8')
+              @bricks.push sprite
 
     @update: =>
         switch @state
@@ -52,7 +59,10 @@ define ["cs!app/player", "cs!app/ball", "cs!app/constants", "cs!app/editor"], (P
         @updateables.push  @ball
         @updateables.push @player
 
-        Editor.activate @game, @addBrick
+        @loadLevel Levels.lungs
+
+        
+
 
     @addBrick:(brick) =>
         @bricks.push brick
