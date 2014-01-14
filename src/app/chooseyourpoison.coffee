@@ -1,7 +1,7 @@
 define ["cs!app/player", "cs!app/ball", "cs!app/constants", "cs!app/editor"], (Player, Ball, Constants, Editor) ->
 
   class Main
-    @state: "begin"
+    @state: "editor"
 
     @setup: =>
         @updateables = []
@@ -14,13 +14,22 @@ define ["cs!app/player", "cs!app/ball", "cs!app/constants", "cs!app/editor"], (P
         @game.load.image("8x8","images/8x8.jpg")
 
     @update: =>
-        for updatable in @updateables
-            updatable.update()
+        switch @state
+            when "play"
+                for updatable in @updateables
+                    updatable.update()
 
-        pointer = @game.input.activePointer
+                pointer = @game.input.activePointer
 
-        if pointer.justReleased(50)
-            @ball.start()
+                if pointer.justReleased(50)
+                    @ball.start()
+
+                @collideBricks()
+            when "editor"
+                console.log "yeah" if @what
+
+
+    @collideBricks: () =>
 
         kill_list = []
 
