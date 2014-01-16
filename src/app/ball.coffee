@@ -63,4 +63,11 @@ define ["cs!app/gameobject", "cs!app/constants"], (GameObject, Constants) ->
                 @y_vel *= -1
 
         updateTrail: () =>
+            @trail.push @game.add.sprite @sprite.x, @sprite.y, 'trail'
+            for trail in @trail
+                continue unless trail?
+                trail.alpha -= 0.1
+                if trail.alpha <= 0
+                    trail.destroy()
+                    @trail.shift()
 

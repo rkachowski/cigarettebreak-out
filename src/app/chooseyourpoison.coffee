@@ -11,6 +11,7 @@ define ["cs!app/player", "cs!app/ball", "cs!app/constants", "cs!app/editor", "cs
 
     @preload: =>
         @game.load.image("fag","images/fag.png")
+        @game.load.image("trail","images/trail.jpg")
         @game.load.image("8x8","images/8x8.jpg")
 
     @loadLevel:(levelString) =>
