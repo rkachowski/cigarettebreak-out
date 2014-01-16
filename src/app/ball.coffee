@@ -8,14 +8,24 @@ define ["cs!app/gameobject", "cs!app/constants"], (GameObject, Constants) ->
             super game,'8x8', 50, 300
             @trail = []
 
-
-
         hit: (sprite) =>
-            intersection = @sprite.bounds.intersection sprite.bounds
+            s1hw = @sprite.bounds.width / 2
+            s2hw = sprite.bounds.width / 2
+            x_distance = Math.abs( @sprite.x - sprite.x)
+            x_projection = Math.abs((s1hw + s2hw) - x_distance)
+            
+            s1hh = @sprite.bounds.height / 2
+            s2hh = sprite.bounds.height / 2
+            y_distance = Math.abs( @sprite.y - sprite.y)
+            y_projection = Math.abs((s1hh + s2hh) - y_distance)
 
-            if intersection.width > intersection.height
+            if x_projection < y_projection
+                @sprite.x += x_projection if sprite.x < @sprite.x
+                @sprite.x -= x_projection if sprite.x > @sprite.x
                 @x_vel *= -1
             else
+                @sprite.y += y_projection if sprite.y < @sprite.y
+                @sprite.y -= y_projection if sprite.y > @sprite.y
                 @y_vel *= -1
 
         update:() =>
@@ -37,8 +47,8 @@ define ["cs!app/gameobject", "cs!app/constants"], (GameObject, Constants) ->
                 sprite.y = @sprite.y
 
         start:() =>
-                @x_vel = -2
-                @y_vel = -2
+                @x_vel = -Constants.speed
+                @y_vel = -Constants.speed
 
                 @state = "play"
 

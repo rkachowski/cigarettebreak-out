@@ -23,6 +23,8 @@ define ["cs!app/player", "cs!app/ball", "cs!app/constants", "cs!app/editor", "cs
     @update: =>
         switch @state
             when "play"
+                @collideBricks()
+
                 for updatable in @updateables
                     updatable.update()
 
@@ -31,24 +33,18 @@ define ["cs!app/player", "cs!app/ball", "cs!app/constants", "cs!app/editor", "cs
                 if pointer.justReleased(50)
                     @ball.start()
 
-                @collideBricks()
             when "editor"
                 console.log "yeah" if @what
 
 
     @collideBricks: () =>
-
-        kill_list = []
-
         for brick in @bricks
-            rect = brick.bounds.intersection @ball.sprite.bounds
-            if rect.width > 0 || rect.height > 0
+            collision = brick.bounds.intersects @ball.sprite.bounds
+            if collision
                 @ball.hit brick
-                kill_list.push brick
-
-        for b in kill_list
-            @bricks.splice($.inArray(b, @bricks),1)
-            b.destroy()
+                @bricks.splice($.inArray(brick, @bricks),1)
+                brick.destroy()
+                break
 
     @create: =>
         @player = new Player(@game)
