@@ -9,4 +9,4 @@ idea gratuitiously stolen from tumblr
 
 [check it out](http://rkachowski.github.io/fag-blaster)
 
-
+"[smoke a fag, put it out](https://www.youtube.com/watch?v=qUE4oDunYkc)" - Albert Einstein
