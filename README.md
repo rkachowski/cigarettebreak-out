@@ -1,10 +1,8 @@
-coffeescript-skeleton
+fag-blaster 2014
 =====================
 
-a simple skeleton for coffeescript dev with bootstrap, jquery and requirejs
+a breakout clone made with the phaser framework. but with a secret hidden message about bad habits. idea gratuitiously stolen from tumblr
 
-## to run
-* `rake setup[<cool app name here>]`
-* `rake run`
 
-you can add coffeescript to src/app and go nuts
+
+
