@@ -4,7 +4,7 @@ a breakout clone made with the phaser framework. but with a secret hidden messag
 
 idea gratuitiously stolen from tumblr
 
-![](https://raw.github.com/rkachowski/fag-blaster/master/images/image.png)
+![](https://raw.github.com/rkachowski/cigarettebreak-out/master/images/image.png)
 
 [check it out](http://rkachowski.github.io/cigarettebreak-out)
 
