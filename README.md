@@ -1,4 +1,4 @@
-cigarettebreak-out=====================
+## cigarettebreak-out
 
 a breakout clone made with the phaser framework. but with a secret hidden message about bad habits. 
 
